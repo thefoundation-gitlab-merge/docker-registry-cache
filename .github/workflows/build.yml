@@ -48,8 +48,8 @@ jobs:
         if: ${{ env.GITHUB_TOKEN }}
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
-      - name: Docker meta
-        id: websync # you'll use this in the next step
+      - name: Meta Data
+        id: meta # you'll use this in the next step
         uses: docker/metadata-action@v3
         with:
           # list of Docker images to use as base name for tags
@@ -70,5 +70,5 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64/v8
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker-registry-cache.outputs.tags }}
-          labels: ${{ steps.docker-registry-cache.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
