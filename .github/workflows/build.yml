@@ -24,11 +24,9 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/
   build:
     runs-on: ubuntu-latest
-
     permissions:
       packages: write
       contents: read
-
     steps:
       - uses: actions/checkout@v3
 
