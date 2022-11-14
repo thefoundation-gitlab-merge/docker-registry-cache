@@ -50,10 +50,6 @@ jobs:
         env:
           CI_VERSION: ${{ github.ref }}
         run: sbt "; test; assembly"
-
-
-
-
       - name: Meta Data
         id: meta # you'll use this in the next step
         uses: docker/metadata-action@v3
